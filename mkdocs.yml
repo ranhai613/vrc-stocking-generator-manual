@@ -1,0 +1,62 @@
+site_name: VRC Stocking Generator Manual
+site_description: Manual for the Unity editor tool VRC Stocking Generator
+
+theme:
+  name: material
+  language: en
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: deep purple
+      accent: pink
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: deep purple
+      accent: pink
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.highlight
+    - search.suggest
+    - toc.follow
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - def_list
+  - pymdownx.details
+  - pymdownx.superfences
+
+plugins:
+  - search
+  - i18n:
+      docs_structure: suffix
+      fallback_to_default: true
+      reconfigure_material: true
+      languages:
+        - locale: en
+          name: English
+          default: true
+          build: true
+          site_name: VRC Stocking Generator Manual
+          nav:
+            - Home: index.md
+        - locale: ja
+          name: 日本語
+          build: true
+          site_name: VRC Stocking Generator マニュアル
+          site_description: Unityエディタ拡張 VRC Stocking Generator のマニュアル
+          theme:
+            language: ja
+          nav_translations:
+            Home: ホーム
+
+nav:
+  - Home: index.md
