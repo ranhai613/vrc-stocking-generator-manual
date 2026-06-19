@@ -6,7 +6,7 @@ Modular Avatar、lilToonの導入を推奨します。Modular Avatarが導入さ
 
 ## 基本的な使い方 {#basic-usage}
 
-1. `Tools > Stocking Generator` からツールを開きます。
+1. `ツール（Tools） > Stocking Generator` からツールを開きます。
 2. `ボディ > Skinned Mesh Renderer` に、アバターの体の `Skinned Mesh Renderer` を指定します。
 3. `マテリアル` 項目でプリセットを選ぶか、自分でマテリアルを指定します。
 4. `ストッキングを生成` をクリックします。
@@ -15,6 +15,7 @@ Modular Avatar、lilToonの導入を推奨します。Modular Avatarが導入さ
 生成されたストッキングオブジェクトは、元のボディオブジェクトの隣に作成されます。メッシュ、テクスチャ、マテリアル、Prefab は指定した出力フォルダーに保存されます。
 
 ## 作成例 {#examples}
+
 - ニーハイ
 
 ??? note "作り方"
@@ -61,9 +62,10 @@ Modular Avatar、lilToonの導入を推奨します。Modular Avatarが導入さ
 
     [除去コライダー](#advanced-exclusion-colliders) を使用します。
     
-    `全身タイツ` を有効にして、`首マスク` を有効にします。ヒエラルキーにGameObjectを追加して、子オブジェクトに球体、カプセル、ボックスコライダーを追加します。
+    `全身タイツ` を有効にして、`首マスク` を有効にします。ヒエラルキーに空のGameObjectを追加して、その子に空のGameObjectをいくつか追加します。子オブジェクトに球体、カプセル、ボックスコライダーのコンポーネントを追加します。
 
     ![](img/pose_default_sleeveless_collider_objects.png)
+    ![](img/add_colliders.png)
 
     球体コライダーで腕を覆い、カプセルコライダーで側面を、ボックスコライダーで背中を覆うと、きれいにノースリーブになります。コライダーの位置やサイズを調整して、好みの袖口の形にしてください。
 
@@ -524,16 +526,21 @@ Modular Avatar、lilToonの導入を推奨します。Modular Avatarが導入さ
 ### 基本ワークフロー {#exclusion-colliders-workflow}
 
 1. アバター付近に空のGameObjectを作成します。
-2. 子オブジェクトを追加し、それにコライダーを追加し、除外したい範囲を覆うように配置します。
+2. その子にも空のGameObjectを追加し、それにコライダーのコンポーネントを追加し、除外したい範囲を覆うように配置します。
+
+![](img/pose_default_sleeveless_collider_objects.png)
+![](img/add_colliders.png)
+![](img/pose_default_sleeveless_collider_whole.png)
+
 3. ツール側で `除去コライダー` を有効にします。
 4. 親オブジェクトを `ルート` に指定します。
+
+![](img/assigne_root.png)
+
 5. `濃くする長さ` を調整して、除外範囲周辺の暗い布表現の幅を決めます。
 6. ストッキングを生成し、結果を確認してください。
 
 有効なGameObject上の有効なコライダーだけが使用されます。対象コライダーはルートとその子以下です。
-
-![](img/pose_default_sleeveless_collider_objects.png)
-![](img/pose_default_sleeveless_collider_whole.png)
 
 ### ２つ目のルート を使う場合 {#second-root}
 
@@ -552,6 +559,14 @@ Modular Avatar、lilToonの導入を推奨します。Modular Avatarが導入さ
 - 何も変わらない場合は、コライダーのGameObjectがアクティブで、Colliderコンポーネントが有効になっているか確認してください。
 
 ## Q&A {#qa}
+
+### ストッキングの生成に時間がかかりすぎます。 {#qa-slow-generation}
+
+テクスチャサイズが大きい、スムージング回数が多い、`各BlendShapeフレームにスムーズ処理を適用` が有効になっているなどの理由が考えられます。これらの設定を下げると、生成時間が短くなります。調整するときはテクスチャサイズを1024などに減らして、完成形を出力するときだけ大きくするのもおすすめです。
+
+- `マテリアル > 詳細設定 > メインカラーテクスチャサイズ` と `ストッキングアルファマスク > 詳細設定 > マスクテクスチャサイズ` を小さくする。
+- `出力 > 詳細設定 > スムーズ反復回数` を減らす。
+- `出力 > 詳細設定 > 各BlendShapeフレームにスムーズ処理を適用（低速）` を無効にする。
 
 ### Generate Stocking ボタンが押せません。何を確認すればいいですか？ {#qa-generate-disabled}
 

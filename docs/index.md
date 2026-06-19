@@ -62,9 +62,10 @@ The generated stocking object is created next to the source body object in the h
 
     Use [Exclusion Colliders](#advanced-exclusion-colliders).
 
-    Enable `Full body tights`, then enable `Neck Mask`. Add a GameObject to the hierarchy, then add sphere, capsule, and box colliders under it.
+    Enable `Full body tights`, then enable `Neck Mask`. Add an empty GameObject to the hierarchy, then add several empty GameObjects under it. Add sphere, capsule, and box collider components to the child objects.
 
     ![](img/pose_default_sleeveless_collider_objects.png)
+    ![](img/add_colliders.png)
 
     Cover the arms with sphere colliders, the sides with capsule colliders, and the back with a box collider to create a clean sleeveless shape. Adjust collider position and size until the arm openings match the shape you want.
 
@@ -525,16 +526,21 @@ Exclusion Colliders remove fabric inside the specified collider volumes. They ar
 ### Basic Workflow {#exclusion-colliders-workflow}
 
 1. Create an empty GameObject near the avatar.
-2. Add child objects, add colliders to them, and place the colliders so they cover the areas to remove.
+2. Add empty GameObjects under it, add collider components to those child objects, and place the colliders so they cover the areas to remove.
+
+![](img/pose_default_sleeveless_collider_objects.png)
+![](img/add_colliders.png)
+![](img/pose_default_sleeveless_collider_whole.png)
+
 3. Enable `Exclusion Colliders` in the tool.
 4. Assign the parent object to `Root`.
+
+![](img/assigne_root.png)
+
 5. Adjust `Dark Length` to control the dark fabric edge around the removed area.
 6. Generate the stocking and check the result.
 
 Only enabled colliders on active GameObjects are used. Target colliders are collected from the root and its children.
-
-![](img/pose_default_sleeveless_collider_objects.png)
-![](img/pose_default_sleeveless_collider_whole.png)
 
 ### Using 2nd Root {#second-root}
 
@@ -553,6 +559,14 @@ Both roots remove pixels from the alpha mask. Their dark boundary widths are app
 - If nothing changes, confirm the collider GameObject is active and the Collider component is enabled.
 
 ## Q&A {#qa}
+
+### Stocking generation takes too long. {#qa-slow-generation}
+
+Possible causes include large texture sizes, high smoothing iteration counts, or enabling `Apply Smooth Iterations to each BlendShape frame (slow)`. Lowering these settings will shorten generation time. When adjusting the result, it is also recommended to reduce texture sizes to something like 1024, then increase them only for the final output.
+
+- Reduce `Material > Advanced Settings > Main Color Texture Size` and `Stocking Alpha Mask > Advanced Settings > Mask Texture Size`.
+- Reduce `Output > Advanced Settings > Smooth Iterations`.
+- Disable `Output > Advanced Settings > Apply Smooth Iterations to each BlendShape frame (slow)`.
 
 ### The Generate Stocking button is disabled. What should I check? {#qa-generate-disabled}
 
