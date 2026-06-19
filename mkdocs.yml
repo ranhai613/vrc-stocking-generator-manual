@@ -1,4 +1,5 @@
 site_name: VRC Stocking Generator Manual
+site_url: https://ranhai613.github.io/vrc-stocking-generator-manual/
 site_description: Manual for the Unity editor tool VRC Stocking Generator
 
 theme:
@@ -69,3 +70,6 @@ plugins:
 
 nav:
   - Home: index.md
+
+extra_javascript:
+  - js/language-redirect.js
