@@ -57,6 +57,15 @@ plugins:
             language: ja
           nav_translations:
             Home: ホーム
+        - locale: zh-Hans
+          name: 简体中文
+          build: true
+          site_name: VRC Stocking Generator 手册
+          site_description: Unity 编辑器扩展 VRC Stocking Generator 的手册
+          theme:
+            language: zh
+          nav_translations:
+            Home: 首页
 
 nav:
   - Home: index.md
