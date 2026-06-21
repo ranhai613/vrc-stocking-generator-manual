@@ -56,6 +56,14 @@ Modular Avatar、lilToonの導入を推奨します。Modular Avatarが導入さ
 
 ![](img/pose_default_asymmetry.png)
 
+- 網タイツ
+
+??? note "作り方"
+
+    `網目パターン` を有効にして、必要に応じて `網目サイズ`、`網目線の太さ`、`円周方向の網目数` を調整します。
+
+![](img/pose_default_fishnet.png)
+
 - ノースリーブ
 
 ??? note "作り方"
@@ -381,6 +389,38 @@ Modular Avatar、lilToonの導入を推奨します。Modular Avatarが導入さ
               </td>
             </tr>
             <tr>
+              <td><code>網目パターン</code></td>
+              <td>
+                アルファマスクに網タイツ風の穴を生成します。手、足先、濃い境界帯は網目にせず、通常のタイツとして残します。<code>全身タイツ</code> には対応していません。
+                <table>
+                  <thead>
+                    <tr>
+                      <th>パラメータ</th>
+                      <th>説明</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><code>有効</code></td>
+                      <td>網目パターン生成を有効にします。</td>
+                    </tr>
+                    <tr>
+                      <td><code>網目サイズ</code></td>
+                      <td>網目セルの縦方向の大きさを調整します。小さい値ほど細かい網目になります。</td>
+                    </tr>
+                    <tr>
+                      <td><code>網目線の太さ</code></td>
+                      <td>網目線の太さを調整します。</td>
+                    </tr>
+                    <tr>
+                      <td><code>円周方向の網目数</code></td>
+                      <td>身体の円周方向に並ぶ網目セル数を調整します。</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+            <tr>
               <td><code>除外コライダー</code></td>
               <td>
                 指定したルート配下のコライダーを使い、生成アルファマスクから範囲を除外します。
@@ -433,7 +473,7 @@ Modular Avatar、lilToonの導入を推奨します。Modular Avatarが導入さ
                     </tr>
                     <tr>
                       <td><code>マスク余白ピクセル</code></td>
-                      <td>継ぎ目を減らすため、生成されたマスク境界を指定ピクセル数だけ拡張します。</td>
+                      <td>継ぎ目を減らすため、生成されたマスク境界を指定ピクセル数だけ拡張します。網目パターンでは、UVシーム周辺の網目マスクにも余白を追加します。</td>
                     </tr>
                   </tbody>
                 </table>

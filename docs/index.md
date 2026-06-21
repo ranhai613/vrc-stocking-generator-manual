@@ -56,6 +56,14 @@ The generated stocking object is created next to the source body object in the h
 
 ![](img/pose_default_asymmetry.png)
 
+- Fishnet tights
+
+??? note "How to make this"
+
+    Enable `Fishnet Pattern`, then adjust `Fishnet Cell Size`, `Fishnet Line Width`, and `Fishnet Around Cells` as needed.
+
+![](img/pose_default_fishnet.png)
+
 - Sleeveless tights
 
 ??? note "How to make this"
@@ -381,6 +389,38 @@ lilToon is supported by default. Other shaders, such as Poiyomi, may also work, 
               </td>
             </tr>
             <tr>
+              <td><code>Fishnet Pattern</code></td>
+              <td>
+                Generates fishnet-style holes in the alpha mask. Hands, feet, and darkened boundary bands are kept as normal tights instead of fishnet. This option does not support <code>Full body tights</code>.
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Parameter</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><code>Enable</code></td>
+                      <td>Enables fishnet pattern generation.</td>
+                    </tr>
+                    <tr>
+                      <td><code>Fishnet Cell Size</code></td>
+                      <td>Controls the vertical size of the fishnet cells. Smaller values create denser cells.</td>
+                    </tr>
+                    <tr>
+                      <td><code>Fishnet Line Width</code></td>
+                      <td>Controls the thickness of the fishnet lines.</td>
+                    </tr>
+                    <tr>
+                      <td><code>Fishnet Around Cells</code></td>
+                      <td>Controls the number of fishnet cells around the body circumference.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+            <tr>
               <td><code>Exclusion Colliders</code></td>
               <td>
                 Uses colliders under a selected root object to remove areas from the generated alpha mask.
@@ -433,7 +473,7 @@ lilToon is supported by default. Other shaders, such as Poiyomi, may also work, 
                     </tr>
                     <tr>
                       <td><code>Mask Padding Pixels</code></td>
-                      <td>Expands generated mask edges by the specified number of pixels to reduce seams.</td>
+                      <td>Expands generated mask edges by the specified number of pixels to reduce seams. For fishnet patterns, this also pads the fishnet mask around UV seams.</td>
                     </tr>
                   </tbody>
                 </table>
